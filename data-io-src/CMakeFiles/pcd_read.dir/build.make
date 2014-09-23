@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/akshaya/technical/tinker-box/data-io-organization/pcd-tester
+CMAKE_SOURCE_DIR = /home/akshaya/technical/tinker-box/data-io-organization/pspi-data/data-io-src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/akshaya/technical/tinker-box/data-io-organization/pcd-tester
+CMAKE_BINARY_DIR = /home/akshaya/technical/tinker-box/data-io-organization/pspi-data/data-io-src
 
 # Include any dependencies generated for this target.
 include CMakeFiles/pcd_read.dir/depend.make
@@ -48,17 +48,17 @@ include CMakeFiles/pcd_read.dir/flags.make
 
 CMakeFiles/pcd_read.dir/pcd_read.cpp.o: CMakeFiles/pcd_read.dir/flags.make
 CMakeFiles/pcd_read.dir/pcd_read.cpp.o: pcd_read.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/akshaya/technical/tinker-box/data-io-organization/pcd-tester/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/akshaya/technical/tinker-box/data-io-organization/pspi-data/data-io-src/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/pcd_read.dir/pcd_read.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/pcd_read.dir/pcd_read.cpp.o -c /home/akshaya/technical/tinker-box/data-io-organization/pcd-tester/pcd_read.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/pcd_read.dir/pcd_read.cpp.o -c /home/akshaya/technical/tinker-box/data-io-organization/pspi-data/data-io-src/pcd_read.cpp
 
 CMakeFiles/pcd_read.dir/pcd_read.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pcd_read.dir/pcd_read.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/akshaya/technical/tinker-box/data-io-organization/pcd-tester/pcd_read.cpp > CMakeFiles/pcd_read.dir/pcd_read.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/akshaya/technical/tinker-box/data-io-organization/pspi-data/data-io-src/pcd_read.cpp > CMakeFiles/pcd_read.dir/pcd_read.cpp.i
 
 CMakeFiles/pcd_read.dir/pcd_read.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pcd_read.dir/pcd_read.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/akshaya/technical/tinker-box/data-io-organization/pcd-tester/pcd_read.cpp -o CMakeFiles/pcd_read.dir/pcd_read.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/akshaya/technical/tinker-box/data-io-organization/pspi-data/data-io-src/pcd_read.cpp -o CMakeFiles/pcd_read.dir/pcd_read.cpp.s
 
 CMakeFiles/pcd_read.dir/pcd_read.cpp.o.requires:
 .PHONY : CMakeFiles/pcd_read.dir/pcd_read.cpp.o.requires
@@ -169,6 +169,6 @@ CMakeFiles/pcd_read.dir/clean:
 .PHONY : CMakeFiles/pcd_read.dir/clean
 
 CMakeFiles/pcd_read.dir/depend:
-	cd /home/akshaya/technical/tinker-box/data-io-organization/pcd-tester && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/akshaya/technical/tinker-box/data-io-organization/pcd-tester /home/akshaya/technical/tinker-box/data-io-organization/pcd-tester /home/akshaya/technical/tinker-box/data-io-organization/pcd-tester /home/akshaya/technical/tinker-box/data-io-organization/pcd-tester /home/akshaya/technical/tinker-box/data-io-organization/pcd-tester/CMakeFiles/pcd_read.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/akshaya/technical/tinker-box/data-io-organization/pspi-data/data-io-src && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/akshaya/technical/tinker-box/data-io-organization/pspi-data/data-io-src /home/akshaya/technical/tinker-box/data-io-organization/pspi-data/data-io-src /home/akshaya/technical/tinker-box/data-io-organization/pspi-data/data-io-src /home/akshaya/technical/tinker-box/data-io-organization/pspi-data/data-io-src /home/akshaya/technical/tinker-box/data-io-organization/pspi-data/data-io-src/CMakeFiles/pcd_read.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/pcd_read.dir/depend
 

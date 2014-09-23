@@ -44,10 +44,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/akshaya/technical/tinker-box/data-io-organization/pcd-tester
+CMAKE_SOURCE_DIR = /home/akshaya/technical/tinker-box/data-io-organization/pspi-data/data-io-src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/akshaya/technical/tinker-box/data-io-organization/pcd-tester
+CMAKE_BINARY_DIR = /home/akshaya/technical/tinker-box/data-io-organization/pspi-data/data-io-src
 
 #=============================================================================
 # Target rules for target CMakeFiles/pcd_read.dir
@@ -56,7 +56,7 @@ CMAKE_BINARY_DIR = /home/akshaya/technical/tinker-box/data-io-organization/pcd-t
 CMakeFiles/pcd_read.dir/all:
 	$(MAKE) -f CMakeFiles/pcd_read.dir/build.make CMakeFiles/pcd_read.dir/depend
 	$(MAKE) -f CMakeFiles/pcd_read.dir/build.make CMakeFiles/pcd_read.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/akshaya/technical/tinker-box/data-io-organization/pcd-tester/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/akshaya/technical/tinker-box/data-io-organization/pspi-data/data-io-src/CMakeFiles  1
 	@echo "Built target pcd_read"
 .PHONY : CMakeFiles/pcd_read.dir/all
 
@@ -66,9 +66,9 @@ all: CMakeFiles/pcd_read.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/pcd_read.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/akshaya/technical/tinker-box/data-io-organization/pcd-tester/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/akshaya/technical/tinker-box/data-io-organization/pspi-data/data-io-src/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pcd_read.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/akshaya/technical/tinker-box/data-io-organization/pcd-tester/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/akshaya/technical/tinker-box/data-io-organization/pspi-data/data-io-src/CMakeFiles 0
 .PHONY : CMakeFiles/pcd_read.dir/rule
 
 # Convenience name for target.
