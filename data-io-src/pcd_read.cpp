@@ -12,39 +12,43 @@
 
 int
 main (int argc, char** argv)
-{
-  pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZRGB>);
-  if (pcl::io::loadPCDFile<pcl::PointXYZRGB> ("test_pcd.pcd", *cloud) == -1) //* load the file
-  {
-    PCL_ERROR ("Couldn't read file test_pcd.pcd \n");
-    return (-1);
-  }
-  double cloudSize   = cloud->points.size();
-  // std::cout << cloudSize << std::endl;
-
-  std::cout << "Loaded "
-            << cloud->width * cloud->height
-            << " data points from test_pcd.pcd with the following fields: "
-            << std::endl;
-  
+{ 
   DIR *dir;
   struct dirent *ent;
   // Data Directory Name
-  std::string XMLDirName   = "./trial-dir";
-  std::string DataDirName   = "./pspi-data";
+  // std::string XMLDirName    = "./xml-dir";
+  // std::string PCDDirName    = "./pcd-dir";
+  // std::string DataDirName   = "../pspi-data";
+
+  std::string XMLDirName    = "../xml-data";
+  std::string PCDDirName    = "/media/18F69AB9F69A969A/final-data/pcd-annotated";
+  std::string DataDirName   = "../keyboards-groundtruth";
+
   // Open That Directory
   if ((dir = opendir (XMLDirName.c_str())) != NULL) 
   {
     /* All the files and directories within directory */
+    int NumOfFiles   = 0;
     while ((ent = readdir (dir)) != NULL) 
     {
       // printf ("%s\n", ent->d_name);
 
       // Get The Filename
       std::string FileName = ent->d_name;
+
+
+
+
+                                                                      // // DEBUG
+                                                                      // if (NumOfFiles > 20)
+                                                                      //   break;
+      
+
+
       // Checking for . and .. names
       if ((FileName.compare(".") != 0) && (FileName.compare("..") != 0))
       {
+        ++NumOfFiles;
         // Make File Name For Writing Out
         int dotPos            = FileName.find_last_of(".");
         std::string RawName   = FileName.substr(0, dotPos);
@@ -52,20 +56,43 @@ main (int argc, char** argv)
 
         // Open FileName.xml And Read In Keyboard Idices
         // Create Read-in Filename and Write-Out Filename
-        std::string ReadFileName    = XMLDirName + "/" + FileName;
-        std::string WriteFileName   = DataDirName + "/" + RawName + "_Keyboard.txt";
+        std::string ReadFileNameXml    = XMLDirName + "/" + FileName;
+        std::string ReadFileNamePcd    = PCDDirName + "/" + RawName + ".pcd";
+        std::string WriteFileName      = DataDirName + "/" + RawName + "_" +"Keyboard"+"_GroundTruth.txt";
+
         // Open FileName
         std::ifstream myReadFile;
-        myReadFile.open(ReadFileName.c_str());
+        myReadFile.open(ReadFileNameXml.c_str());
         // std::cerr << "Error: " << strerror(errno);
         std::cout << FileName.c_str() << "..." << std::endl;
-        // Output String
-        std::string LineReadIn;
+
+        // --------------------------------------------------
+        // Open PCD File & Load Point Cloud
+        // --------------------------------------------------
+        pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZRGB>);
+        if (pcl::io::loadPCDFile<pcl::PointXYZRGB> (ReadFileNamePcd.c_str(), *cloud) == -1) //* load the file
+        {
+          PCL_ERROR ("Couldn't read file %s \n", ReadFileNamePcd.c_str());
+          return (-1);
+        }
+        double cloudSize   = cloud->points.size();
+        // std::cout << cloudSize << std::endl;
+
+        std::cout << "Loaded "
+                  << cloud->width * cloud->height
+                  << " data points from " << ReadFileNamePcd
+                  << std::endl;
+
         // --------------------------------------------------
         // Open File and Start Processing For Keyboard Points
         // --------------------------------------------------
         if (myReadFile.is_open())
         {
+          // Output String
+          std::string LineReadIn;
+          // Openning Write Out File
+          std::ofstream outFilePtr;
+          outFilePtr.open(WriteFileName.c_str());
           // Initialise a Vector To Hold Indices
           std::vector<bool> IsIndxKeyboard(cloudSize, 0);
           int NumOfKeyboardPts   = 0;
@@ -148,20 +175,25 @@ main (int argc, char** argv)
             // --------------------------------
             // Write Out Results For This File
             // --------------------------------
-            std::ofstream outFilePtr;
-            outFilePtr.open(WriteFileName.c_str());
             for(int it = 0; it < IsIndxKeyboard.size(); ++it)
             {
               outFilePtr << IsIndxKeyboard.at(it);
             }
-            outFilePtr.close();
           }
+          outFilePtr.close();
         } // If File Has Openned ...
         myReadFile.close();
       } // Valid Filenames Only
 
     } // Loop Over All Files In Directory
     closedir (dir);
+    std::cout << std::endl
+              << std::endl
+              << std::endl
+              << std::endl
+              << std::endl
+              << --NumOfFiles
+              << std::endl;
   }
 
   else 
