@@ -26,3 +26,11 @@
 *.exe
 *.out
 *.app
+
+# Custom
+data-io-src/pcd_read
+data-io-src/CMakeCache.txt
+data-io-src/CMakeFiles
+data-io-src/*~
+*~
+data-io-src/cmake_install.cmake
