@@ -34,3 +34,4 @@ data-io-src/CMakeFiles
 data-io-src/*~
 *~
 data-io-src/cmake_install.cmake
+Makefile
