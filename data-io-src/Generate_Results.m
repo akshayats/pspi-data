@@ -46,48 +46,71 @@ disp(str)
 %%
 close all
 
-figure();
-hold on;
+% % % figure();
+% % % hold on;
 %[m,l] = min(pspi_color_fix_desk > 0);
 l = length(pspi_nocolor_fix_desk );%l-1
-bar((1:3:l*3)-1, ransac_desk(1:l),0.3,'g');
-bar(2:3:3*(l+1)-3, pspi_nocolor_fix_desk(1:l), 0.3,'r');
+% % % bar((1:3:l*3)-1, ransac_desk(1:l),0.3,'g');
+% % % bar(2:3:3*(l+1)-3, pspi_nocolor_fix_desk(1:l), 0.3,'r');
+% % % legend('ransac','pspi')
 
 [n, binEarmarks] = hist(pspi_nocolor_fix_desk./ransac_desk, 10);
-figure;
-bar(binEarmarks,n);
+% % % figure;
+% % % bar(binEarmarks,n);
 % ratio_desk_inliers = mean(pspi_nocolor_fix_desk)/mean(ransac_desk);
 %%
-legend('ransac','pspi')
 v1 = intersection_ransac_Keyboard(1:l)./Keyboard_masks;
 v2 = intersection_pspi_color_fix_Keyboard(1:l)./Keyboard_masks;
+% % % figure()
+% % % clf
+% % % hold on
+% % % plot(v1,'g')
+% % % plot(v2,'r')
+% % % legend('ransac','pspi')
+% % % title('Percents of False Positives');
+
+figure;
+hold on;
+[h1,x1] = hist([0 v1 1],15);
+[h2,x2] = hist([0 v2 1],15);
+bar(x1, h1,0.3,'g');
+bar(x2+0.01, h2, 0.3,'r');
+
+aaa = logspace(0,1,15);
+aaa = aaa-1;
+aaa = aaa/9;
+
+[h1,x1] = histc(v1,aaa);
+[h2,x2] = histc(v2,aaa);
 
 figure()
 clf
 hold on
-plot(v1,'g')
-plot(v2,'r')
-legend('ransac','pspi')
+bar(aaa, h1,'g');
+bar(aaa+0.01, h2,'r');
 
-h1 = hist([0 v1 1],150);
-h2 = hist([0 v2 1],150);
 
 figure()
 clf
 hold on
-plot(h1,'g')
-plot(h2,'r')
+stem(aaa, h1,'g');
+stem(aaa+0.01, h2,'r');
+% bar((1:3:150*3)-1, h1,0.3,'g');
+% bar(2:3:3*(150+1)-3, h2, 0.3,'r');
+% plot(h1,'g')
+% plot(h2,'r')
 legend('ransac','pspi color')
+title('Histogram of False Positives Percents')
 
-ch1 = cumsum(h1);
-ch2 = cumsum(h2);
-
-figure()
-clf
-hold on
-plot(ch1,'g')
-plot(ch2,'r')
-legend('ransac','pspi color')
-
-mean(v1)
-mean(v2)
+% % ch1 = cumsum(h1);
+% % ch2 = cumsum(h2);
+% % 
+% % figure()
+% % clf
+% % hold on
+% % plot(ch1,'g')
+% % plot(ch2,'r')
+% % legend('ransac','pspi color')
+% % 
+% % mean(v1)
+% % mean(v2)
